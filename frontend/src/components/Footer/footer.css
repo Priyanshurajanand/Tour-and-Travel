@@ -28,6 +28,10 @@
     color: var(--secondary-color);
     font-size: 1.1rem;
 }
+.footer_quick-links h6 p {
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
 
 .copyright{
     color: var(--text-color);

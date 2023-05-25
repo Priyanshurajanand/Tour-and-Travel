@@ -38,6 +38,7 @@ const Footer = () => {
 
   return (
     <footer className="footer">
+      <hr />
       <Container>
         <Row>
           <Col lg="3">
@@ -100,8 +101,8 @@ const Footer = () => {
                     <i className="ri-map-pin-line"></i>
                   </span>
                   Address:
-                </h6>
                 <p className="mb-0 ">Bihar , India</p>
+                </h6>
               </ListGroupItem>
               <ListGroupItem className="ps-0 border-0 flex align-items-center gap-3 ">
                 <h6 className="mb-0 d-flex align-items-center gap-2">
@@ -109,8 +110,8 @@ const Footer = () => {
                     <i className="ri-mail-line"></i>
                   </span>
                   Email:
-                </h6>
                 <p className="mb-0 ">priyanshurajanand123456@gmail.com</p>
+                </h6>
               </ListGroupItem>
               <ListGroupItem className="ps-0 border-0 flex align-items-center gap-3 ">
                 <h6 className="mb-0 d-flex align-items-center gap-2">
@@ -118,8 +119,8 @@ const Footer = () => {
                     <i className="ri-phone-fill"></i>
                   </span>
                   Phone:
-                </h6>
                 <p className="mb-0 ">+919876543210</p>
+                </h6>
               </ListGroupItem>
             </ListGroup>
           </Col>
