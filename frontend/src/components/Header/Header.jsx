@@ -1,8 +1,9 @@
-import React , {useEffect, useRef} from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import { Container, Row, Button } from "reactstrap";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import "./header.css";
-import Logo from '../../assets/images/logo.png'
+import Logo from "../../assets/images/logo.png";
+import { AuthContext } from "../../context/AuthContext";
 
 const nav_links = [
   {
@@ -20,23 +21,36 @@ const nav_links = [
 ];
 
 const Header = () => {
-  const headerRef = useRef(null)
+  const headerRef = useRef(null);
+  const menuRef = useRef(null);
+  const navigate = useNavigate();
+  const { user, dispatch } = useContext(AuthContext);
 
-  const stickyHeaderFunc = ()=>{
-    window.addEventListener('scroll' , ()=>{
-      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        headerRef.current.classList.add('sticky_header')
-      }else{
-        headerRef.current.classList.remove('sticky_header')
+  const logout = () => {
+    dispatch({ type: "LOGOUT" });
+    navigate("/");
+  };
+
+  const stickyHeaderFunc = () => {
+    window.addEventListener("scroll", () => {
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        headerRef.current.classList.add("sticky_header");
+      } else {
+        headerRef.current.classList.remove("sticky_header");
       }
-    })
-  }
+    });
+  };
 
-  useEffect(()=>{
-    stickyHeaderFunc()
+  useEffect(() => {
+    stickyHeaderFunc();
 
-    return window.removeEventListener('scroll', stickyHeaderFunc)
-  })
+    return window.removeEventListener("scroll", stickyHeaderFunc);
+  });
+
+  const toggleMenu = () => menuRef.current.classList.toggle('show_menu') 
 
   return (
     <header className="header" ref={headerRef}>
@@ -47,7 +61,7 @@ const Header = () => {
               <img src={Logo} alt="" />
             </div>
 
-            <div className="navigation">
+            <div className="navigation" ref={menuRef} onClick={toggleMenu}> 
               <ul className="menu d-flex align-items-center gap-5">
                 {nav_links.map((item, index) => (
                   <li className="nav_item" key={index}>
@@ -66,16 +80,25 @@ const Header = () => {
 
             <div className="nav_right d-flex align-items-center gap-4">
               <div className="nav_right d-flex align-items-center gap-4">
-                <Button className="btn secondary_btn">
-                  <Link to="/login">Login</Link>
-                </Button>
-                <Button className="btn primary_btn">
-                  <Link to="/register">Register</Link>
-                </Button>
+                {user ? (
+                  <>
+                    <h5 className="mb-0">{user.username}</h5>
+                    <Button className="btn btn-dark" onClick={logout}>Logout</Button>
+                  </>
+                ) : (
+                  <>
+                    <Button className="btn secondary_btn">
+                      <Link to="/login">Login</Link>
+                    </Button>
+                    <Button className="btn primary_btn">
+                      <Link to="/register">Register</Link>
+                    </Button>
+                  </>
+                )}
               </div>
             </div>
-            <span className="mobile_menu">
-              <i class="ri-menu-line"></i>
+            <span className="mobile_menu" onClick={toggleMenu}>
+              <i className="ri-menu-line"></i>
             </span>
           </div>
         </Row>
