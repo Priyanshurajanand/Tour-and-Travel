@@ -13,7 +13,7 @@ dotenv.config()
 const app = express()
 const port = process.env.PORT || 8000;
 const corsOptions ={
-    origin:'https://mysimple-tour-travel.netlify.app/', 
+    origin:'https://mysimple-tour-travel.netlify.app', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200,
  }
