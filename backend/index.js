@@ -12,14 +12,15 @@ import bookingRoute from './routes/booking.js'
 dotenv.config()
 const app = express()
 const port = process.env.PORT || 8000;
-const corsOptions ={
-    origin:'https://tour-and-travel-nu.vercel.app/', 
-    // origin: 'http://localhost:3000',
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200,
-    methods : ['GET', 'POST', 'PUT', 'DELETE'],
-    
- }
+
+
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://tour-and-travel-nu.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    next();
+});
 
 //database connection
 // mongoose.set("strictQuery",false);
