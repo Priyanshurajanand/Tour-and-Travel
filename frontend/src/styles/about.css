@@ -1,0 +1,32 @@
+.equal-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    
+  }
+  
+  .equal-card .card-body {
+    flex: 1;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .card-title {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .card-text {
+    text-align: justify;
+  }
+  
+  

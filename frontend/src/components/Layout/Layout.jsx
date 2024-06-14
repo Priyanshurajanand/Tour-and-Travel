@@ -9,6 +9,7 @@ import SearchResultList from "../../pages/SearchResultList";
 import Header from "./../Header/Header";
 import Footer from "./../Footer/Footer";
 import ThankYou from "../../pages/ThankYou";
+import About from "../../pages/About";
 
 const Layout = () => {
   return (
@@ -17,6 +18,7 @@ const Layout = () => {
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
         <Route path="/tours" element={<Tours />} />
         <Route path="/tours/:id" element={<TourDetails />} />
         <Route path="/login" element={<Login />} />

@@ -13,9 +13,11 @@ dotenv.config()
 const app = express()
 const port = process.env.PORT || 8000;
 const corsOptions ={
-    origin:'https://mysimple-tour-travel.netlify.app', 
+    origin:'https://tour-and-travel-nu.vercel.app/', 
+    // origin: 'http://localhost:3000',
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200,
+    
  }
 
 //database connection
